@@ -1,0 +1,6 @@
+12*21
+++21*3&T+F
+++T*3*(0)
+
+Neprojde?
+(3*(5+8))&++0.25 			- neporadi si s floatem, ??chyba parseru??
