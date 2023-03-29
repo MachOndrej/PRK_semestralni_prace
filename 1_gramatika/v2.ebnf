@@ -1,7 +1,9 @@
-syntax = expr, { "&" expr};
+syntax = expr { "&" expr};
 expr = term, { "+", term };
 term = factor, { "*", factor };
-factor =  "(", expr, ")" | "++"?, number;
+factor = un_exp | "(", expr, ")";
+
+un_exp = ++?, number;
 
 number = int | float | bool;
 int = nonzeroDigit, {digit} | zero;

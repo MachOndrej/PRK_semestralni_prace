@@ -4,3 +4,4 @@
 
 Neprojde?
 (3*(5+8))&++0.25 			- neporadi si s floatem, ??chyba parseru??
+(2.5*(53+15))
