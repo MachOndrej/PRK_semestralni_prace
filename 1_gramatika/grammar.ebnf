@@ -1,12 +1,15 @@
-syntax = expr, { "&" expr};
+syntax = expr, { "&",expr};
 expr = term, { "+", term };
 term = factor, { "*", factor };
-factor =  "(", expr, ")" | "++"?, number;
-
-number = int | float | bool;
-int = nonzeroDigit, {digit} | zero;
-float = digit, {digit}, ".", digit, {digit};
+factor = "(", expr, ")" | numberU;
+numberU = unary,number;
+number = float | bool;
+float = whole,numend;
+whole = nonzeroDigit, {digit} | zero;
 bool = "T" | "F";
 digit = "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
 nonzeroDigit = "1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
 zero = "0";
+unary = "++" | ;
+numend = ".", whole2 | ;
+whole2 = digit, {digit};
