@@ -1,0 +1,36 @@
+#SUPER EXPR
+5++&(85+1.85)*15&F++&
+
+#Data užitá k testování
+
+#Samotné hodnoty:
+108
+F
+2.08
+
+#Prosté sčítání:
+0+0
+100+1011
+1+1+1
+
+#Prosté násobení:
+0*0
+100*1011
+1*10*100
+
+#Increment
+1++
+
+#Kombinace operací bez závorek (test priority operací)
+10+10*10*10+10
+
+#Závorky - jednoduché
+(1)
+(1+1)
+(10+10*10)*(10+10)
+
+#Závorky - vložené
+((10+10)*10)*(10+10)
+
+
+
