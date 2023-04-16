@@ -20,9 +20,6 @@ whole2 = digit, {digit};
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
-
-void debug_print(const char* fmt, ...);
 
 
 int yylex();
@@ -50,78 +47,61 @@ extern int yylineno, yylval;
 */
 
 Syntax:
-    expr LINE_END { debug_print("Rule1\n"); }
-    | AMPR expr LINE_END { debug_print("Rule1\n");} 
+    expr LINE_END { printf("Rule1\n"); }
+    | AMPR expr LINE_END { printf("Rule1\n");} 
     ;
 
 expr:
-    term { debug_print("Rule2\n"); }
-    | PLUS term {debug_print("Rule2\n"); }
+    term { printf("Rule2\n"); }
+    | PLUS term {printf("Rule2\n"); }
     ;
 
 term:
-    factor { debug_print("Rule3\n"); }
-    | MPY factor { debug_print("Rule3\n"); }
+    factor { printf("Rule3\n"); }
+    | MPY factor { printf("Rule3\n"); }
     ;
 
 factor:
-    L_BR expr R_BR { debug_print("Rule4\n"); }
-    | numberU { debug_print("Rule4\n"); }
+    L_BR expr R_BR { printf("Rule4\n"); }
+    | numberU { printf("Rule4\n"); }
     ;
 
 numberU:
-    unary { debug_print("Rule5\n"); }
-    | number { debug_print("Rule5\n"); }
+    unary { printf("Rule5\n"); }
+    | number { printf("Rule5\n"); }
     ;
 
 number:
-    float { debug_print("Rule6\n"); }
-    | BOOL { debug_print("Rule6\n"); }
+    float { printf("Rule6\n"); }
+    | BOOL { printf("Rule6\n"); }
     ;
 
 float:
-    whole numend { debug_print("Rule7\n"); }
+    whole numend { printf("Rule7\n"); }
     ;
 
 whole:
-    NONZERO_INT { debug_print("Rule8\n"); }
-    | NONZERO_INT INT { debug_print("Rule8\n"); }
-    | ZERO { debug_print("Rule8\n"); }
+    NONZERO_INT { printf("Rule8\n"); }
+    | NONZERO_INT INT { printf("Rule8\n"); }
+    | ZERO { printf("Rule8\n"); }
     ;
 
 unary:
-    INCREMENT { debug_print("Rule10\n"); }
-    | { debug_print("Rule10\n"); }
+    INCREMENT { printf("Rule10\n"); }
+    | { printf("Rule10\n"); }
     ;
 
 numend:
-    DOT whole2 { debug_print("Rule11\n"); }
-    | { debug_print("Rule11\n"); }
+    DOT whole2 { printf("Rule11\n"); }
+    | { printf("Rule11\n"); }
     ;
 
 whole2:
-    INT { debug_print("Rule12\n"); }
+    INT { printf("Rule12\n"); }
     ;
 %%
 
 /* C code */
-
-void debug_print(const char* fmt, ...)
-{
-    /* Create a va_list to hold the variable arguments */
-    va_list args;
-
-    /* Initialize the va_list with the variable arguments */
-    va_start(args, fmt);
-
-    /* Print the formatted string to stdout */
-    printf("[DEBUG] ");
-    vprintf(fmt, args);
-    printf("\n");
-
-    /* Clean up the va_list */
-    va_end(args);
-}
 
 
 void yyerror(const char* s) {   
@@ -130,7 +110,7 @@ void yyerror(const char* s) {
 
 void main(){
     // yydebug = 1;
-    debug_print("Entering the main");
+    printf("Entering the main:\n");
     yyparse();
     
     

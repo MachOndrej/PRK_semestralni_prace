@@ -42,15 +42,15 @@ T|F             {values=process_pattern(values,"Boolean detected.", PATT_BOOL); 
 [ \t]+          { /* Ignore whitespace */ }
 ^\n             {void_lines_done++; print_msg("Void line detected.\n");}       
 \n              {lines_done++; print_msg("Line detected.\n");                                                   return LINE_END;}
-.               { /* Ignore all other characters */ }
+.               {errors_detected=process_pattern(errors_detected,"An error detected.\n",PATT_ERR); /* Ignore all other characters */ }
 %%
 
 /* Function declaration */
-
+/*
 int yywrap(void) {
 return 1;
 }
-
+*/
 
 void print_msg(char *msg){
     #ifdef VERBOSE
