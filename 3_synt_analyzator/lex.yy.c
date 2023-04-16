@@ -362,7 +362,7 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[21] =
     {   0,
-        3,    3,   17,   15,   12,   14,   11,    7,    8,    6,
+        0,    0,   17,   15,   12,   14,   11,    7,    8,    6,
         5,   10,    2,    1,    4,   13,   12,    9,    3,    0
     } ;
 
@@ -452,10 +452,15 @@ char *yytext;
 #line 2 "mylang.lex"
 /* Variable declaration */
 
-int values=0;
+int nonzero_int=0;
+int zero=0;
+int integer=0;
+int boolean=0;
+
 int lines_done=0;
 int void_lines_done=0;
 int lines_comment=0;
+
 int add_ops=0;
 int mpy_ops=0;
 int inc_ops=0;
@@ -475,8 +480,8 @@ int process_pattern(int number, char *Message, int Pattern);
 void print_error(int ERRNO);
 void print_msg(char *msg);
 
-#line 479 "lex.yy.c"
-#line 480 "lex.yy.c"
+#line 484 "lex.yy.c"
+#line 485 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -696,9 +701,9 @@ YY_DECL
 		}
 
 	{
-#line 29 "mylang.lex"
+#line 34 "mylang.lex"
 
-#line 702 "lex.yy.c"
+#line 707 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -758,87 +763,91 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 30 "mylang.lex"
-{values=process_pattern(values,"NonZero detected.", PATT_NONZERO_INT); yylval = atoi(yytext);   return NONZERO_INT;}
+#line 35 "mylang.lex"
+{nonzero_int=process_pattern(nonzero_int,"NonZero detected.", PATT_NONZERO_INT); yylval = atoi(yytext);   
+                return NONZERO_INT;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 31 "mylang.lex"
-{values=process_pattern(values,"Zero detected.", PATT_ZERO); yylval = atoi(yytext);             return ZERO;}
+#line 37 "mylang.lex"
+{zero=process_pattern(zero,"Zero detected.", PATT_ZERO); yylval = atoi(yytext);             
+                return ZERO;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 32 "mylang.lex"
-{values=process_pattern(values,"Integer detected.", PATT_INT); yylval = atoi(yytext);           return INT;}
+#line 39 "mylang.lex"
+{integer=process_pattern(integer,"Integer detected.", PATT_INT); yylval = atoi(yytext);           
+                return INT;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 33 "mylang.lex"
-{values=process_pattern(values,"Boolean detected.", PATT_BOOL); yylval = (yytext[0] == 'T');    return BOOL;}
+#line 41 "mylang.lex"
+{boolean=process_pattern(boolean,"Boolean detected.", PATT_BOOL); yylval = (yytext[0] == 'T');    
+                return BOOL;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 35 "mylang.lex"
+#line 44 "mylang.lex"
 {add_ops=process_pattern(add_ops,"Add operator detected.",PATT_PLUS);                           return PLUS;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 36 "mylang.lex"
+#line 45 "mylang.lex"
 {mpy_ops=process_pattern(mpy_ops,"Multiplication operator detected.",PATT_MPY);                 return MPY;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 37 "mylang.lex"
+#line 46 "mylang.lex"
 {br_left=process_pattern(br_left,"Opening bracket detected.",PATT_L_BR);                        return L_BR;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 38 "mylang.lex"
+#line 47 "mylang.lex"
 {br_right=process_pattern(br_right,"Opening bracket detected.",PATT_R_BR);                      return R_BR;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 39 "mylang.lex"
+#line 48 "mylang.lex"
 {inc_ops=process_pattern(inc_ops,"Increment operation detected.",PATT_INCREMENT);               return INCREMENT;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 40 "mylang.lex"
+#line 49 "mylang.lex"
 {dot=process_pattern(dot,"Dot.",PATT_DOT);                                                      return DOT;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 41 "mylang.lex"
+#line 50 "mylang.lex"
 {ampr=process_pattern(ampr,"New example.",PATT_AMPR);                                           return AMPR;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 42 "mylang.lex"
+#line 51 "mylang.lex"
 { /* Ignore whitespace */ }
 	YY_BREAK
 case 13:
 /* rule 13 can match eol */
 YY_RULE_SETUP
-#line 43 "mylang.lex"
+#line 52 "mylang.lex"
 {void_lines_done++; print_msg("Void line detected.\n");}       
 	YY_BREAK
 case 14:
 /* rule 14 can match eol */
 YY_RULE_SETUP
-#line 44 "mylang.lex"
+#line 53 "mylang.lex"
 {lines_done++; print_msg("Line detected.\n");                                                   return LINE_END;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 45 "mylang.lex"
+#line 54 "mylang.lex"
 {errors_detected=process_pattern(errors_detected,"An error detected.\n",PATT_ERR); /* Ignore all other characters */ }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 46 "mylang.lex"
+#line 55 "mylang.lex"
 ECHO;
 	YY_BREAK
-#line 842 "lex.yy.c"
+#line 851 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1846,15 +1855,14 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 46 "mylang.lex"
+#line 55 "mylang.lex"
 
 
 /* Function declaration */
-/*
+
 int yywrap(void) {
-return 1;
+    return 1;
 }
-*/
 
 void print_msg(char *msg){
     #ifdef VERBOSE

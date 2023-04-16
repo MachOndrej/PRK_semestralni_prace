@@ -1,6 +1,7 @@
 %{
 
 /* Original EBNF    
+MachLang = syntax;
 syntax = expr, { "&",expr};
 expr = term, { "+", term };
 term = factor, { "*", factor };
@@ -46,19 +47,25 @@ extern int yylineno, yylval;
     ;
 */
 
-Syntax:
-    expr LINE_END { printf("Rule1\n"); }
-    | AMPR expr LINE_END { printf("Rule1\n");} 
+MachLang:
+    MachLang syntax LINE_END { printf("Rule0\n"); }
+    | syntax LINE_END { printf("Rule0\n") ;}
+    ;
+
+syntax:
+    expr { printf("Rule1\n");}
+    | syntax AMPR expr { printf("Rule1\n");} 
     ;
 
 expr:
-    term { printf("Rule2\n"); }
-    | PLUS term {printf("Rule2\n"); }
+    term {printf("Rule2\n"); }
+    | expr PLUS term {printf("Rule2\n"); }
     ;
 
 term:
     factor { printf("Rule3\n"); }
-    | MPY factor { printf("Rule3\n"); }
+    | term MPY factor { printf("Rule3\n"); }
+
     ;
 
 factor:
@@ -67,8 +74,7 @@ factor:
     ;
 
 numberU:
-    unary { printf("Rule5\n"); }
-    | number { printf("Rule5\n"); }
+    unary number { printf("Rule5\n"); }
     ;
 
 number:
@@ -82,7 +88,7 @@ float:
 
 whole:
     NONZERO_INT { printf("Rule8\n"); }
-    | NONZERO_INT INT { printf("Rule8\n"); }
+    | whole INT { printf("Rule8\n"); }
     | ZERO { printf("Rule8\n"); }
     ;
 
@@ -98,6 +104,7 @@ numend:
 
 whole2:
     INT { printf("Rule12\n"); }
+    | whole2 INT { printf("Rule12\n"); }
     ;
 %%
 

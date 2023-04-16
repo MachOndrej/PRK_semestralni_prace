@@ -4,7 +4,7 @@ GCC=gcc
 FILENAME=mylang
 PRINT_OUTPUT="y"
 
-PARSER_BIN=mylang_parser
+PARSER_BIN="mylang_parser"
 
 ROOT_DIR=$(shell pwd)
 INCDIR=$(ROOT_DIR)/inc
@@ -14,7 +14,7 @@ INCFILES=$(wildcard $(INCDIR)/*.c)
 #LIBS = $(addprefix -l, $(LIBNAMES))
 
 BINDIR="./bin"
-TESTDIR="../testfiles"
+TESTDIR="./testfiles"
 TEST_OK_FILE="test_ok.txt"
 
 .PHONY: parser test_ok test_errors subclean clean all
@@ -35,11 +35,14 @@ parser:
 	yacc -d $(FILENAME).y
 	lex $(FILENAME).lex
 	$(GCC) lex.yy.c y.tab.c -o $(PARSER_BIN)
+#	$(GCC) -o $(PARSER_BIN) lex.yy.c y.tab.c -ly
 	@mv $(PARSER_BIN) $(BINDIR)/
 #	@make -s subclean
 
 test_ok:
 	@./$(BINDIR)/$(PARSER_BIN) < $(TESTDIR)/$(TEST_OK_FILE) >$(BINDIR)/$(TEST_OK_FILE).report
+#test_errors:
+#	@./$(BINDIR)/$(PARSER_BIN) < $(TESTDIR)/$(TEST_ERRORS_FILE) >$(BINDIR)/$(TEST_ERRORS_FILE).report
 
 subclean:
 	@rm -rf lex.yy.c

@@ -1,10 +1,15 @@
 %{
 /* Variable declaration */
 
-int values=0;
+int nonzero_int=0;
+int zero=0;
+int integer=0;
+int boolean=0;
+
 int lines_done=0;
 int void_lines_done=0;
 int lines_comment=0;
+
 int add_ops=0;
 int mpy_ops=0;
 int inc_ops=0;
@@ -27,10 +32,14 @@ void print_msg(char *msg);
 %}
 
 %%
-[1-9]           {values=process_pattern(values,"NonZero detected.", PATT_NONZERO_INT); yylval = atoi(yytext);   return NONZERO_INT;}
-"0"             {values=process_pattern(values,"Zero detected.", PATT_ZERO); yylval = atoi(yytext);             return ZERO;}
-[0-9]*          {values=process_pattern(values,"Integer detected.", PATT_INT); yylval = atoi(yytext);           return INT;}
-T|F             {values=process_pattern(values,"Boolean detected.", PATT_BOOL); yylval = (yytext[0] == 'T');    return BOOL;}
+[1-9]           {nonzero_int=process_pattern(nonzero_int,"NonZero detected.", PATT_NONZERO_INT); yylval = atoi(yytext);   
+                return NONZERO_INT;}
+"0"             {zero=process_pattern(zero,"Zero detected.", PATT_ZERO); yylval = atoi(yytext);             
+                return ZERO;}
+[0-9][0-9]*     {integer=process_pattern(integer,"Integer detected.", PATT_INT); yylval = atoi(yytext);           
+                return INT;}
+T|F             {boolean=process_pattern(boolean,"Boolean detected.", PATT_BOOL); yylval = (yytext[0] == 'T');    
+                return BOOL;}
 
 \+              {add_ops=process_pattern(add_ops,"Add operator detected.",PATT_PLUS);                           return PLUS;}
 \*              {mpy_ops=process_pattern(mpy_ops,"Multiplication operator detected.",PATT_MPY);                 return MPY;}
@@ -46,11 +55,10 @@ T|F             {values=process_pattern(values,"Boolean detected.", PATT_BOOL); 
 %%
 
 /* Function declaration */
-/*
+
 int yywrap(void) {
-return 1;
+    return 1;
 }
-*/
 
 void print_msg(char *msg){
     #ifdef VERBOSE
