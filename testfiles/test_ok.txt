@@ -1,5 +1,5 @@
 #SUPER EXPR
-5++&(85+1.85)*15&F++&
+5++&(85+1.85)*15&++F
 
 #Data užitá k testování
 
@@ -19,7 +19,7 @@ F
 1*10*100
 
 #Increment
-1++
+++1
 
 #Kombinace operací bez závorek (test priority operací)
 10+10*10*10+10

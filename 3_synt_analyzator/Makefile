@@ -33,9 +33,9 @@ test:
 
 parser:
 	yacc -d $(FILENAME).y
-	lex $(FILENAME).lex
-	$(GCC) lex.yy.c y.tab.c -o $(PARSER_BIN)
-#	$(GCC) -o $(PARSER_BIN) lex.yy.c y.tab.c -ly
+	lex $(FILENAME).l
+#	$(GCC) lex.yy.c y.tab.c -o $(PARSER_BIN)
+	$(GCC) -o $(PARSER_BIN) lex.yy.c y.tab.c 
 	@mv $(PARSER_BIN) $(BINDIR)/
 #	@make -s subclean
 

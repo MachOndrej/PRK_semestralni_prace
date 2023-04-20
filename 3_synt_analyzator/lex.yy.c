@@ -448,8 +448,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "mylang.lex"
-#line 2 "mylang.lex"
+#line 1 "mylang.l"
+#line 2 "mylang.l"
 /* Variable declaration */
 
 int nonzero_int=0;
@@ -701,7 +701,7 @@ YY_DECL
 		}
 
 	{
-#line 34 "mylang.lex"
+#line 34 "mylang.l"
 
 #line 707 "lex.yy.c"
 
@@ -763,88 +763,88 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 35 "mylang.lex"
+#line 35 "mylang.l"
 {nonzero_int=process_pattern(nonzero_int,"NonZero detected.", PATT_NONZERO_INT); yylval = atoi(yytext);   
                 return NONZERO_INT;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 37 "mylang.lex"
+#line 37 "mylang.l"
 {zero=process_pattern(zero,"Zero detected.", PATT_ZERO); yylval = atoi(yytext);             
                 return ZERO;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 39 "mylang.lex"
+#line 39 "mylang.l"
 {integer=process_pattern(integer,"Integer detected.", PATT_INT); yylval = atoi(yytext);           
                 return INT;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 41 "mylang.lex"
+#line 41 "mylang.l"
 {boolean=process_pattern(boolean,"Boolean detected.", PATT_BOOL); yylval = (yytext[0] == 'T');    
                 return BOOL;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 44 "mylang.lex"
+#line 44 "mylang.l"
 {add_ops=process_pattern(add_ops,"Add operator detected.",PATT_PLUS);                           return PLUS;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 45 "mylang.lex"
+#line 45 "mylang.l"
 {mpy_ops=process_pattern(mpy_ops,"Multiplication operator detected.",PATT_MPY);                 return MPY;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 46 "mylang.lex"
+#line 46 "mylang.l"
 {br_left=process_pattern(br_left,"Opening bracket detected.",PATT_L_BR);                        return L_BR;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 47 "mylang.lex"
+#line 47 "mylang.l"
 {br_right=process_pattern(br_right,"Opening bracket detected.",PATT_R_BR);                      return R_BR;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 48 "mylang.lex"
+#line 48 "mylang.l"
 {inc_ops=process_pattern(inc_ops,"Increment operation detected.",PATT_INCREMENT);               return INCREMENT;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 49 "mylang.lex"
+#line 49 "mylang.l"
 {dot=process_pattern(dot,"Dot.",PATT_DOT);                                                      return DOT;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 50 "mylang.lex"
+#line 50 "mylang.l"
 {ampr=process_pattern(ampr,"New example.",PATT_AMPR);                                           return AMPR;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 51 "mylang.lex"
+#line 51 "mylang.l"
 { /* Ignore whitespace */ }
 	YY_BREAK
 case 13:
 /* rule 13 can match eol */
 YY_RULE_SETUP
-#line 52 "mylang.lex"
+#line 52 "mylang.l"
 {void_lines_done++; print_msg("Void line detected.\n");}       
 	YY_BREAK
 case 14:
 /* rule 14 can match eol */
 YY_RULE_SETUP
-#line 53 "mylang.lex"
+#line 53 "mylang.l"
 {lines_done++; print_msg("Line detected.\n");                                                   return LINE_END;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 54 "mylang.lex"
+#line 54 "mylang.l"
 {errors_detected=process_pattern(errors_detected,"An error detected.\n",PATT_ERR); /* Ignore all other characters */ }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 55 "mylang.lex"
+#line 55 "mylang.l"
 ECHO;
 	YY_BREAK
 #line 851 "lex.yy.c"
@@ -1855,7 +1855,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 55 "mylang.lex"
+#line 55 "mylang.l"
 
 
 /* Function declaration */
@@ -1880,7 +1880,7 @@ void print_error(int ERRNO){
 int process_pattern(int number,char* Message, int Pattern) {
     if (Pattern == PATT_ERR) {       
         print_error(ERR_PATTERN);        
-        exit(ERR_PATTERN);
+        //exit(ERR_PATTERN);
     }    
 
     print_msg(Message);

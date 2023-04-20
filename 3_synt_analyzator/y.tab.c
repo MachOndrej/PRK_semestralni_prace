@@ -80,13 +80,14 @@ numberU = unary,number;
 number = float | bool;
 float = whole,numend;
 whole = nonzeroDigit, {digit} | zero;
-bool = "T" | "F";
-digit = "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
-nonzeroDigit = "1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
-zero = "0";
 unary = "++" | ;
 numend = ".", whole2 | ;
 whole2 = digit, {digit};
+
+zero = "0";
+bool = "T" | "F";
+digit = "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
+nonzeroDigit = "1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
 */
 
 #include <stdio.h>
@@ -98,7 +99,7 @@ void yyerror(const char *s);
 extern int yylineno, yylval;
 
 
-#line 102 "y.tab.c"
+#line 103 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -608,9 +609,9 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    51,    51,    52,    56,    57,    61,    62,    66,    67,
-      72,    73,    77,    81,    82,    86,    90,    91,    92,    96,
-      97,   101,   102,   106,   107
+       0,    53,    53,    54,    58,    59,    63,    64,    68,    69,
+      74,    75,    79,    83,    84,    88,    92,    93,    94,    98,
+      99,   103,   104,   108,   109
 };
 #endif
 
@@ -1189,145 +1190,145 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* MachLang: MachLang syntax LINE_END  */
-#line 51 "mylang.y"
+#line 53 "mylang.y"
                              { printf("Rule0\n"); }
-#line 1195 "y.tab.c"
+#line 1196 "y.tab.c"
     break;
 
   case 3: /* MachLang: syntax LINE_END  */
-#line 52 "mylang.y"
+#line 54 "mylang.y"
                       { printf("Rule0\n") ;}
-#line 1201 "y.tab.c"
+#line 1202 "y.tab.c"
     break;
 
   case 4: /* syntax: expr  */
-#line 56 "mylang.y"
+#line 58 "mylang.y"
          { printf("Rule1\n");}
-#line 1207 "y.tab.c"
+#line 1208 "y.tab.c"
     break;
 
   case 5: /* syntax: syntax AMPR expr  */
-#line 57 "mylang.y"
+#line 59 "mylang.y"
                        { printf("Rule1\n");}
-#line 1213 "y.tab.c"
+#line 1214 "y.tab.c"
     break;
 
   case 6: /* expr: term  */
-#line 61 "mylang.y"
+#line 63 "mylang.y"
          {printf("Rule2\n"); }
-#line 1219 "y.tab.c"
+#line 1220 "y.tab.c"
     break;
 
   case 7: /* expr: expr PLUS term  */
-#line 62 "mylang.y"
+#line 64 "mylang.y"
                      {printf("Rule2\n"); }
-#line 1225 "y.tab.c"
+#line 1226 "y.tab.c"
     break;
 
   case 8: /* term: factor  */
-#line 66 "mylang.y"
+#line 68 "mylang.y"
            { printf("Rule3\n"); }
-#line 1231 "y.tab.c"
+#line 1232 "y.tab.c"
     break;
 
   case 9: /* term: term MPY factor  */
-#line 67 "mylang.y"
+#line 69 "mylang.y"
                       { printf("Rule3\n"); }
-#line 1237 "y.tab.c"
+#line 1238 "y.tab.c"
     break;
 
   case 10: /* factor: L_BR expr R_BR  */
-#line 72 "mylang.y"
+#line 74 "mylang.y"
                    { printf("Rule4\n"); }
-#line 1243 "y.tab.c"
+#line 1244 "y.tab.c"
     break;
 
   case 11: /* factor: numberU  */
-#line 73 "mylang.y"
+#line 75 "mylang.y"
               { printf("Rule4\n"); }
-#line 1249 "y.tab.c"
+#line 1250 "y.tab.c"
     break;
 
   case 12: /* numberU: unary number  */
-#line 77 "mylang.y"
+#line 79 "mylang.y"
                  { printf("Rule5\n"); }
-#line 1255 "y.tab.c"
+#line 1256 "y.tab.c"
     break;
 
   case 13: /* number: float  */
-#line 81 "mylang.y"
+#line 83 "mylang.y"
           { printf("Rule6\n"); }
-#line 1261 "y.tab.c"
+#line 1262 "y.tab.c"
     break;
 
   case 14: /* number: BOOL  */
-#line 82 "mylang.y"
+#line 84 "mylang.y"
            { printf("Rule6\n"); }
-#line 1267 "y.tab.c"
+#line 1268 "y.tab.c"
     break;
 
   case 15: /* float: whole numend  */
-#line 86 "mylang.y"
+#line 88 "mylang.y"
                  { printf("Rule7\n"); }
-#line 1273 "y.tab.c"
+#line 1274 "y.tab.c"
     break;
 
   case 16: /* whole: NONZERO_INT  */
-#line 90 "mylang.y"
+#line 92 "mylang.y"
                 { printf("Rule8\n"); }
-#line 1279 "y.tab.c"
+#line 1280 "y.tab.c"
     break;
 
   case 17: /* whole: whole INT  */
-#line 91 "mylang.y"
+#line 93 "mylang.y"
                 { printf("Rule8\n"); }
-#line 1285 "y.tab.c"
+#line 1286 "y.tab.c"
     break;
 
   case 18: /* whole: ZERO  */
-#line 92 "mylang.y"
+#line 94 "mylang.y"
            { printf("Rule8\n"); }
-#line 1291 "y.tab.c"
+#line 1292 "y.tab.c"
     break;
 
   case 19: /* unary: INCREMENT  */
-#line 96 "mylang.y"
+#line 98 "mylang.y"
               { printf("Rule10\n"); }
-#line 1297 "y.tab.c"
+#line 1298 "y.tab.c"
     break;
 
   case 20: /* unary: %empty  */
-#line 97 "mylang.y"
+#line 99 "mylang.y"
       { printf("Rule10\n"); }
-#line 1303 "y.tab.c"
+#line 1304 "y.tab.c"
     break;
 
   case 21: /* numend: DOT whole2  */
-#line 101 "mylang.y"
+#line 103 "mylang.y"
                { printf("Rule11\n"); }
-#line 1309 "y.tab.c"
+#line 1310 "y.tab.c"
     break;
 
   case 22: /* numend: %empty  */
-#line 102 "mylang.y"
+#line 104 "mylang.y"
       { printf("Rule11\n"); }
-#line 1315 "y.tab.c"
+#line 1316 "y.tab.c"
     break;
 
   case 23: /* whole2: INT  */
-#line 106 "mylang.y"
+#line 108 "mylang.y"
         { printf("Rule12\n"); }
-#line 1321 "y.tab.c"
+#line 1322 "y.tab.c"
     break;
 
   case 24: /* whole2: whole2 INT  */
-#line 107 "mylang.y"
+#line 109 "mylang.y"
                  { printf("Rule12\n"); }
-#line 1327 "y.tab.c"
+#line 1328 "y.tab.c"
     break;
 
 
-#line 1331 "y.tab.c"
+#line 1332 "y.tab.c"
 
       default: break;
     }
@@ -1520,7 +1521,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 109 "mylang.y"
+#line 111 "mylang.y"
 
 
 /* C code */

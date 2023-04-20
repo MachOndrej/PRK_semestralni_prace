@@ -10,13 +10,14 @@ numberU = unary,number;
 number = float | bool;
 float = whole,numend;
 whole = nonzeroDigit, {digit} | zero;
-bool = "T" | "F";
-digit = "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
-nonzeroDigit = "1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
-zero = "0";
 unary = "++" | ;
 numend = ".", whole2 | ;
 whole2 = digit, {digit};
+
+zero = "0";
+bool = "T" | "F";
+digit = "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
+nonzeroDigit = "1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9";
 */
 
 #include <stdio.h>
@@ -44,6 +45,7 @@ extern int yylineno, yylval;
 %%
 /* Expr:
     expr_part1 expr_part2    {action; }
+    | other expr
     ;
 */
 

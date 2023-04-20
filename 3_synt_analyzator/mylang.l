@@ -34,7 +34,7 @@ void print_msg(char *msg);
 %%
 [1-9]           {nonzero_int=process_pattern(nonzero_int,"NonZero detected.", PATT_NONZERO_INT); yylval = atoi(yytext);   
                 return NONZERO_INT;}
-"0"             {zero=process_pattern(zero,"Zero detected.", PATT_ZERO); yylval = atoi(yytext);             
+0               {zero=process_pattern(zero,"Zero detected.", PATT_ZERO); yylval = atoi(yytext);             
                 return ZERO;}
 [0-9][0-9]*     {integer=process_pattern(integer,"Integer detected.", PATT_INT); yylval = atoi(yytext);           
                 return INT;}
@@ -46,7 +46,7 @@ T|F             {boolean=process_pattern(boolean,"Boolean detected.", PATT_BOOL)
 \(              {br_left=process_pattern(br_left,"Opening bracket detected.",PATT_L_BR);                        return L_BR;}
 \)              {br_right=process_pattern(br_right,"Opening bracket detected.",PATT_R_BR);                      return R_BR;}
 "++"            {inc_ops=process_pattern(inc_ops,"Increment operation detected.",PATT_INCREMENT);               return INCREMENT;}
-"."             {dot=process_pattern(dot,"Dot.",PATT_DOT);                                                      return DOT;}
+\.              {dot=process_pattern(dot,"Dot.",PATT_DOT);                                                      return DOT;}
 \&              {ampr=process_pattern(ampr,"New example.",PATT_AMPR);                                           return AMPR;}
 [ \t]+          { /* Ignore whitespace */ }
 ^\n             {void_lines_done++; print_msg("Void line detected.\n");}       
@@ -76,7 +76,7 @@ void print_error(int ERRNO){
 int process_pattern(int number,char* Message, int Pattern) {
     if (Pattern == PATT_ERR) {       
         print_error(ERR_PATTERN);        
-        exit(ERR_PATTERN);
+        //exit(ERR_PATTERN);
     }    
 
     print_msg(Message);

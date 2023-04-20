@@ -1,9 +1,11 @@
 //#define VERBOSE 1
 #undef VERBOSE
 
+#define _CPP_IOSTREAMS y
 /* Define constants for patterns - used in process_pattern function */
 
 #define PATT_NO 0 /* No pattern will be sent to parser */
+
 #define PATT_NONZERO_INT 1 /* Non zero digit detected */
 #define PATT_ZERO 2 /* Zero digit detected */
 #define PATT_INT 3 /* Integer detected */
