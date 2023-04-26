@@ -1,14 +1,14 @@
 %{
 
 /* Original EBNF    
-MachLang = syntax;
+MyLang = syntax;
 syntax = expr, { "&",expr};
 expr = term, { "+", term };
 term = factor, { "*", factor };
 factor = "(", expr, ")" | numberU;
 numberU = unary,number;
 number = float | bool;
-float = whole,numend;
+float = whole, numend;
 whole = nonzeroDigit, {digit} | zero;
 unary = "++" | ;
 numend = ".", whole2 | ;
@@ -31,15 +31,13 @@ extern int yylineno, yylval;
 %}
 %token INT
 %token BOOL
-%token NONZERO_INT
-%token ZERO
+%token FLOAT
 %token L_BR
 %token R_BR
 %token PLUS
 %token MPY
 %token INCREMENT
 %token AMPR
-%token DOT
 %token LINE_END
 
 %%
@@ -49,9 +47,9 @@ extern int yylineno, yylval;
     ;
 */
 
-MachLang:
-    MachLang syntax LINE_END { printf("Rule0\n"); }
-    | syntax LINE_END { printf("Rule0\n") ;}
+MyLang:
+    MyLang syntax LINE_END { printf("Syntax OK, Rule0\n"); }
+    | syntax LINE_END { printf("Syntax OK, Rule0\n") ;}
     ;
 
 syntax:
@@ -76,38 +74,16 @@ factor:
     ;
 
 numberU:
-    unary number { printf("Rule5\n"); }
+    INCREMENT number { printf("Rule5\n"); }
+    | number { printf("Rule5\n"); }
     ;
 
 number:
-    float { printf("Rule6\n"); }
-    | BOOL { printf("Rule6\n"); }
+    BOOL { printf("Rule6\n"); }
+    | INT { printf("Rule6\n"); }
+    | FLOAT { printf("Rule6\n"); }
     ;
 
-float:
-    whole numend { printf("Rule7\n"); }
-    ;
-
-whole:
-    NONZERO_INT { printf("Rule8\n"); }
-    | whole INT { printf("Rule8\n"); }
-    | ZERO { printf("Rule8\n"); }
-    ;
-
-unary:
-    INCREMENT { printf("Rule10\n"); }
-    | { printf("Rule10\n"); }
-    ;
-
-numend:
-    DOT whole2 { printf("Rule11\n"); }
-    | { printf("Rule11\n"); }
-    ;
-
-whole2:
-    INT { printf("Rule12\n"); }
-    | whole2 INT { printf("Rule12\n"); }
-    ;
 %%
 
 /* C code */

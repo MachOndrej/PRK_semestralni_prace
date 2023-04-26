@@ -56,16 +56,14 @@ extern int yydebug;
     YYUNDEF = 257,                 /* "invalid token"  */
     INT = 258,                     /* INT  */
     BOOL = 259,                    /* BOOL  */
-    NONZERO_INT = 260,             /* NONZERO_INT  */
-    ZERO = 261,                    /* ZERO  */
-    L_BR = 262,                    /* L_BR  */
-    R_BR = 263,                    /* R_BR  */
-    PLUS = 264,                    /* PLUS  */
-    MPY = 265,                     /* MPY  */
-    INCREMENT = 266,               /* INCREMENT  */
-    AMPR = 267,                    /* AMPR  */
-    DOT = 268,                     /* DOT  */
-    LINE_END = 269                 /* LINE_END  */
+    FLOAT = 260,                   /* FLOAT  */
+    L_BR = 261,                    /* L_BR  */
+    R_BR = 262,                    /* R_BR  */
+    PLUS = 263,                    /* PLUS  */
+    MPY = 264,                     /* MPY  */
+    INCREMENT = 265,               /* INCREMENT  */
+    AMPR = 266,                    /* AMPR  */
+    LINE_END = 267                 /* LINE_END  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -76,16 +74,14 @@ extern int yydebug;
 #define YYUNDEF 257
 #define INT 258
 #define BOOL 259
-#define NONZERO_INT 260
-#define ZERO 261
-#define L_BR 262
-#define R_BR 263
-#define PLUS 264
-#define MPY 265
-#define INCREMENT 266
-#define AMPR 267
-#define DOT 268
-#define LINE_END 269
+#define FLOAT 260
+#define L_BR 261
+#define R_BR 262
+#define PLUS 263
+#define MPY 264
+#define INCREMENT 265
+#define AMPR 266
+#define LINE_END 267
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

@@ -21,7 +21,7 @@ TEST_OK_FILE="test_ok.txt"
 
 all: clean parser test_ok test_errors
 	@if [ $(PRINT_OUTPUT) ]; then cat $(BINDIR)/$(TEST_OK_FILE).report; fi
-	@if [ $(PRINT_OUTPUT) ]; then cat $(BINDIR)/$(TEST_ERRORS_FILE).report; fi
+#	@if [ $(PRINT_OUTPUT) ]; then cat $(BINDIR)/$(TEST_ERRORS_FILE).report; fi
 
 
 test:
@@ -33,14 +33,14 @@ test:
 
 parser:
 	yacc -d $(FILENAME).y
-	lex $(FILENAME).l
-#	$(GCC) lex.yy.c y.tab.c -o $(PARSER_BIN)
-	$(GCC) -o $(PARSER_BIN) lex.yy.c y.tab.c 
+	lex $(FILENAME).lex
+	$(GCC) lex.yy.c y.tab.c -o $(PARSER_BIN)
+#	$(GCC) -o $(PARSER_BIN) lex.yy.c y.tab.c 
 	@mv $(PARSER_BIN) $(BINDIR)/
 #	@make -s subclean
 
 test_ok:
-	@./$(BINDIR)/$(PARSER_BIN) < $(TESTDIR)/$(TEST_OK_FILE) >$(BINDIR)/$(TEST_OK_FILE).report
+	@./$(BINDIR)/$(PARSER_BIN) < $(TESTDIR)/$(TEST_OK_FILE) > $(BINDIR)/$(TEST_OK_FILE).report
 #test_errors:
 #	@./$(BINDIR)/$(PARSER_BIN) < $(TESTDIR)/$(TEST_ERRORS_FILE) >$(BINDIR)/$(TEST_ERRORS_FILE).report
 

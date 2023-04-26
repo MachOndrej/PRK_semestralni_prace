@@ -6,9 +6,9 @@
 
 #define PATT_NO 0 /* No pattern will be sent to parser */
 
-#define PATT_NONZERO_INT 1 /* Non zero digit detected */
-#define PATT_ZERO 2 /* Zero digit detected */
-#define PATT_INT 3 /* Integer detected */
+#define PATT_INT 1 /* Non zero digit detected */
+/*#define PATT_ZERO 2 /* Zero digit detected */
+#define PATT_FLOAT 3 /* Integer detected */
 #define PATT_BOOL 4 /* Boolean detected */
 
 #define PATT_PLUS 5 /* Plus operator */
@@ -16,7 +16,7 @@
 #define PATT_L_BR 7 /* Left bracket */
 #define PATT_R_BR 8 /* Close bracket */
 #define PATT_INCREMENT 9 /* Increment operator */
-#define PATT_DOT 10 /* Dot detected */
+/*#define PATT_DOT 10 /* Dot detected */
 #define PATT_AMPR 11 /* Next expression */
 
 #define PATT_ERR 100 /* Error in patterns: exit on errors! */
