@@ -6,12 +6,12 @@
 4) Implementace kalkulátoru
 </bt></bt>
 ## Požadavky
-Operace: sčítání (+), násobení (\*), inkrementace (++) a práce se závorkami </bt>
-Datové typy: integer, boolean a float (užívání pouze čísel > 0) </bt>
-Unikátní vlastnost: znak "&" bude oddělovat jednotlivá zadání pro kalkulačku, která budou řešena samostatně </bt>
+Operace: sčítání (+), násobení (\*), inkrementace (++) a práce se závorkami <br/>
+Datové typy: integer, boolean a float (užívání pouze čísel > 0) <br/>
+Unikátní vlastnost: znak "&" bude oddělovat jednotlivá zadání pro kalkulačku, která budou řešena samostatně <br/>
 
 </bt></bt>
 ## Info
-Předmět: PRK </bt>
-Akademický rok: 2022/23</bt>
-Vypracoval: Bc. Ondřej Mach
+Předmět: PRK <br/>
+Akademický rok: 2022/23  <br/>
+Vypracoval: Bc. Ondřej Mach <br/>
