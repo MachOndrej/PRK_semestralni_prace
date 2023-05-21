@@ -8,7 +8,7 @@
 </bt></bt>
 ## Požadavky
 **Operace:** sčítání (+), násobení (\*), inkrementace (++) a práce se závorkami <br/>
-**Datové typy:** integer, boolean a float (užívání pouze čísel > 0) <br/>
+**Datové typy:** integer, boolean a float (práce s čísly 0 a větší) <br/>
 **Unikátní vlastnost:** znak "&" bude oddělovat jednotlivá zadání pro kalkulačku, ty budou následně řešena samostatně <br/>
 
 </bt></bt>
