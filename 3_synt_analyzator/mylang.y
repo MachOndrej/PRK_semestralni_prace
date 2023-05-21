@@ -96,8 +96,5 @@ void yyerror(const char* s) {
 void main(){
     // yydebug = 1;
     printf("Entering the main:\n");
-    yyparse();
-    
-    
+    yyparse();    
 }
-
