@@ -1,6 +1,6 @@
 # PRK - Semestrální projekt
 ## Fáze projektu:
-1) Tvorba vlastní gramatiky
+1) Tvorba vlastní gramatiky (EBNF)
 2) Lexikální analyzátor (lex)
 3) Syntaktický analyzátor (yacc)
 4) Implementace kalkulátoru
