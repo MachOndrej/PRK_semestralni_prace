@@ -1,0 +1,28 @@
+# Jednotlive vyrazy
+5*8&++F             = 40 & 1
+# Samotné hodnoty:
+108                 = 108
+F                   = 0
+2.08                = 2.08
+# Prosté sčítání:
+0+0                 = 0 
+100+1011            = 1 111
+1+1+1               = 3
+1.58+1.85           = 3.43
+# Prosté násobení:
+0*0                 = 0
+100*1011            = 101 100
+1*10*100            = 1 000
+1.58*8.25           = 13.035
+# Increment
+++1                 = 2
+++T                 = 2
+++1.85              = 2.85
+# Kombinace operací bez závorek (test priority operací)
+10+10*10*10+10      = 1 020
+# Závorky - jednoduché
+(1)                 = 1
+(1+1)               = 2
+(10+10*10)*(10+10)  = 2 200
+# Závorky - vložené
+((10+10)*10)*(10+10) = 4 000

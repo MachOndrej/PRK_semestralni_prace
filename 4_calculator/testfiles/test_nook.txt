@@ -1,0 +1,23 @@
+# Test lexikálního analyzátoru
+spatny_retezec
+FF
+# Nespárované sčítání
+0+
++1011
+# Nesprávný increment:
+5++
+# Nespárované násobení:
+0*
+*1011
+# Zdvojené operátory
+0**0
+100*+1011
+10++10
+10+10*+10*10+10
+# Závorky - jednoduché a nespárované
+(10+10*10)*(10+10
+10+10*10)*(10+10)
+# Závorky - vložené a chybně párované
+((10+10)*10)*(10+10))
+(((10+10)*10)*(10+10)
+10+10)*10)*(10+10)

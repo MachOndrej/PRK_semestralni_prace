@@ -1,0 +1,28 @@
+# Jednotlive vyrazy
+5*8&++F
+# Samotné hodnoty:
+108
+F
+2.08
+# Prosté sčítání:
+0+0
+100+1011
+1+1+1
+1.58+1.85
+# Prosté násobení:
+0*0
+100*1011
+1*10*100
+1.58*8.25
+# Increment
+++1
+++T
+++1.85
+# Kombinace operací bez závorek (test priority operací)
+10+10*10*10+10
+# Závorky - jednoduché
+(1)
+(1+1)
+(10+10*10)*(10+10)
+# Závorky - vložené
+((10+10)*10)*(10+10)
