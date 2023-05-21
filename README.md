@@ -1,9 +1,10 @@
-# Smestrální projekt PRK
+# PRK - Semestrální projekt
 ## Fáze projektu:
 1) Tvorba vlastní gramatiky
 2) Lexikální analyzátor (lex)
 3) Syntaktický analyzátor (yacc)
 4) Implementace kalkulátoru
+
 </bt></bt>
 ## Požadavky
 **Operace:** sčítání (+), násobení (\*), inkrementace (++) a práce se závorkami <br/>
